@@ -1,0 +1,45 @@
+package com.ootd.project.ajax;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
+import com.ootd.project.dao.BoardDao;
+
+// 좋아요 요청을 처리하는 모델 클래스
+public class RecommendAction implements AjaxProcess {
+	
+	public void ajaxProcess(
+			HttpServletRequest request, HttpServletResponse response)
+					throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("m_id");
+		String no = request.getParameter("no");
+		int chknum=0;		
+		HashMap<String, Integer> map = null;
+		BoardDao dao = new BoardDao();
+		chknum = dao.dBfavCheck(user_id, Integer.parseInt(no));
+		if(chknum==1) {
+			map = dao.getList_thanks(Integer.parseInt(no), user_id,0);
+		}else {
+			map = dao.getList_thanks(Integer.parseInt(no), user_id,2);
+		}
+		
+		Gson gson = new Gson();
+		
+		String result = gson.toJson(map);
+							
+		System.out.println("RecommendAction - result : " + result);
+		
+		response.setContentType("text/html; charset=utf-8");		
+		PrintWriter out = response.getWriter();
+		out.println(result);
+	}
+}

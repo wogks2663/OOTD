@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.writebox1 {
+	margin: auto; 
+	width: 1000px;
+	padding: 50px 100px 50px 125px; 
+	 border-right: 1px solid  #c8c8c8;
+	 border-left: 1px solid   #c8c8c8;
+}
+.writebox1 {
+
+	margin: auto; 
+}
+.bookmark-content { 
+	width: 100%; margin: 0 auto; padding: 50px 0; min-height: 600px; 
+}
+
+.listPage {
+    text-align: center; 
+    padding: 5px; 
+}
+
+.bookmark-ad { 
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+}
+
+.bookmark-product {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 5px;
+}
+
+.bookmark-box {
+	width: 100%;
+	padding-top: 120%;
+	position: relative;
+
+	text-align: center;
+	max-width: 497.5px;
+	max-height: 703.33px;
+}
