@@ -1,2 +1,1 @@
-# OOTD
-Project
+OOTD Project
